@@ -1,0 +1,24 @@
+# Build folders
+/build/
+/out/
+/bin/
+/lib/
+/CMakeFiles/
+/CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Backups
+*~
