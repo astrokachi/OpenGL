@@ -1,24 +1,33 @@
 // include/CelestialBody.h
-// Represents a single object in the solar system, like a planet or a star.
+// Represents a celestial body with a texture and independent rotation.
 
 #ifndef CELESTIALBODY_H
 #define CELESTIALBODY_H
 
 #include "Sphere.h"
 #include "Shader.h"
+#include "Texture.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <string>
 
 class CelestialBody {
 public:
-    CelestialBody(float radius, float orbitRadius, float orbitSpeed, glm::vec4 color);
-    void draw(Shader& shader, const glm::mat4& parentTransform, float time);
+    // Constructor now accepts a rotationSpeed
+    CelestialBody(float radius, float orbitRadius, float orbitSpeed, float rotationSpeed, const std::string& texturePath);
+
+    // New function to calculate and return the model matrix
+    glm::mat4 getModelMatrix(const glm::mat4& parentTransform, float time);
+
+    // Draw function is now simpler
+    void draw(Shader& shader);
 
 private:
     Sphere sphere;
-    glm::vec4 color;
+    Texture texture;
     float orbitRadius;
     float orbitSpeed;
+    float rotationSpeed; // New member variable
 };
 
 #endif
